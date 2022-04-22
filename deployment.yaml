@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rqchallenge-deployment
+  labels:
+    app: rqchallenge-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rqchallenge-deployment
+  template:
+    metadata:
+      labels:
+        app: rqchallenge-deployment
+    spec:
+      containers:
+      - name: rqchallenge
+        image: rohitbothe/rqchallenge
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rqchallenge-service
+spec:
+  selector:
+    app: rqchallenge-deployment
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer
