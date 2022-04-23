@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	RestTemplate restTemplate = new RestTemplate();
 		
-//	@Value("${api.base.url}")
+	//@Value("${api.base.url}")
 	private String API_BASE_URL="http://dummy.restapiexample.com/api/v1";
 
 	@Override
